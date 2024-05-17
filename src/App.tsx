@@ -1,43 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-
-interface ICustomer {
-  id: string;
-  name: string;
-  email: string;
-}
-
-// Simulating a fetch function that returns customer data
-const fetchCustomers = ():Promise<ICustomer[]> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve([
-        { id: 'asdfmn1', name: 'John Doe', email: 'john.doe@example.com' },
-        { id: '1m1vbfo', name: 'Jane Smith', email: 'jane.smith@example.com' },
-        { id: 'sfx44kr', name: 'Jane Smith3', email: 'jane.smith2@example.com' }
-      ]);
-    }, 1000);
-  });
-};
-
+import { useCustomers } from './customers/useCustomers';
 
 function App() {
 
-  const [customers,setCustomers] = useState<ICustomer[]>([]);
-  
-  useEffect(() => { 
-    const getCustomersAsync = async () => {  
-      const getCustomersResult = await fetchCustomers();
-      setCustomers(getCustomersResult);
-    
-    };
-    getCustomersAsync();
-
-
-   }, [])
-
+  const {customers} = useCustomers();
 
   return (
     <div className="App">
@@ -51,9 +19,9 @@ function App() {
 export default App;
 
 /* TODO: 
-- useCustomers
+- ✅ useCustomers
 - Customers display component
 - Types into separate file
 - useAsyncEffect/useEffectAsync - cleaner code
-- loading indicator
+- loading indicator (empyt array/isfetching variable from useCustomers)
 */
