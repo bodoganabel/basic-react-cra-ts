@@ -1,8 +1,5 @@
 import React from 'react';
-
-import './Customer.styles.scss';
-
-
+import { ICustomer } from './customers.types';
 const Customer = (props: {customer: ICustomer}) => {
 
 

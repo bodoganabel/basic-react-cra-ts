@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ICustomer } from "./customers.types";
 
 
 // Simulating a fetch function that returns customer data
